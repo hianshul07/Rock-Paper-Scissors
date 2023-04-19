@@ -1,0 +1,14 @@
+main {
+  margin: 1rem 2rem;
+}
+
+
+.button {
+  height:48px;
+  width: 100px;
+  border: none;
+  margin: 2rem 0;
+  color: #f5f5f5;
+  border-radius: 16px;
+  background-color: #212529;
+}

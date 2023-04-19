@@ -1,13 +1,18 @@
 import React, { useState } from "react";
+import { Navbar, NavItem, NavbarBrand, Button } from "reactstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "bootstrap/dist/css/bootstrap.css";
+import "./index.css";
 
 const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
 
 const RockPaperScissors = () => {
-	const [playerChoice, setPlayerChoice] = useState(null);
-	const [computerChoice, setComputerChoice] = useState(null);
-	const [result, setResult] = useState(null);
+	const [playerChoice, setPlayerChoice] = useState("");
+	const [computerChoice, setComputerChoice] = useState("");
+	const [result, setResult] = useState("");
 
 	const handleChoice = (choice) => {
 		const computerChoices = [ROCK, PAPER, SCISSORS];
@@ -15,10 +20,10 @@ const RockPaperScissors = () => {
 			computerChoices[Math.floor(Math.random() * computerChoices.length)];
 		setPlayerChoice(choice);
 		setComputerChoice(randomChoice);
-		setResult(getResult(choice, randomChoice));
+		setResult(checkIsWinner(choice, randomChoice));
 	};
 
-	const getResult = (player, computer) => {
+	const checkIsWinner = (player, computer) => {
 		if (player === computer) {
 			return "Tie!";
 		} else if (
@@ -32,20 +37,35 @@ const RockPaperScissors = () => {
 		}
 	};
 
+	const notify = () => toast("khikhi", { type: "danger" });
 	return (
 		<div>
-			<h1>Rock Paper Scissors</h1>
-			<p>Choose your weapon:</p>
-			<button onClick={() => handleChoice(ROCK)}>Rock</button>
-			<button onClick={() => handleChoice(PAPER)}>Paper</button>
-			<button onClick={() => handleChoice(SCISSORS)}>Scissors</button>
-			{playerChoice && computerChoice && result && (
-				<div>
-					<p>You chose {playerChoice}</p>
-					<p>The computer chose {computerChoice}</p>
-					<p>{result}</p>
-				</div>
-			)}
+			<Navbar color="dark" dark className="font-10">
+				<NavbarBrand>Rock Paper Scissors</NavbarBrand>
+			</Navbar>
+			<main>
+				<h1>Choose your option:</h1>
+				<button className="button" onClick={() => handleChoice(ROCK)}>
+					Rock
+				</button>{" "}
+				{/* <button className="button" onClick={notify}>
+					NatuNatu
+				</button>{" "} */}
+				<button className="button" onClick={() => handleChoice(PAPER)}>
+					Paper
+				</button>{" "}
+				<button className="button" onClick={() => handleChoice(SCISSORS)}>
+					Scissor
+				</button>
+				{playerChoice && computerChoice && result && (
+					<div>
+						<p className="h-16">Your choice {playerChoice}</p>
+						<p>Computer's choice {computerChoice}</p>
+						<p>{result}</p>
+					</div>
+				)}
+				<ToastContainer />
+			</main>
 		</div>
 	);
 };
