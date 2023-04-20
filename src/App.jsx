@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, NavItem, NavbarBrand, Button } from "reactstrap";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import "bootstrap/dist/css/bootstrap.css";
+import image from "./assets/paper.jpg";
 import "./index.css";
 
 const ROCK = "rock";
@@ -37,12 +34,11 @@ const RockPaperScissors = () => {
 		}
 	};
 
-	const notify = () => toast("khikhi", { type: "danger" });
 	return (
 		<div>
-			<Navbar color="dark" dark className="font-10">
-				<NavbarBrand>Rock Paper Scissors</NavbarBrand>
-			</Navbar>
+			<nav color="dark" dark className="navbar">
+				<p>Rock Paper Scissors</p>
+			</nav>
 			<main>
 				<h1>Choose your option:</h1>
 				<button className="button" onClick={() => handleChoice(ROCK)}>
@@ -59,12 +55,13 @@ const RockPaperScissors = () => {
 				</button>
 				{playerChoice && computerChoice && result && (
 					<div>
-						<p className="h-16">Your choice {playerChoice}</p>
+						{/* <p className="">Your choice {playerChoice}</p> */}
+						<p className="">Your choice {playerChoice}</p>
 						<p>Computer's choice {computerChoice}</p>
 						<p>{result}</p>
 					</div>
 				)}
-				<ToastContainer />
+				<img src={image} alt="" height={"100px"} />
 			</main>
 		</div>
 	);
