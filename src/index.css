@@ -1,28 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 html,
 body {
-  margin: 0%;
-  padding: 0%;
-  box-sizing: border-box;
+	margin: 0%;
+	padding: 0%;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
 }
 
 main {
-  margin: 1rem 2rem;
+	margin: 1rem 2rem;
 }
 
 .navbar {
-  padding: 0 2rem;
-  display: flex;
-  background-color: #212529;
-  color: #f5f5f5;
-  font-size: 2rem;
+	padding: 0 2rem;
+	display: flex;
+	background-color: #212529;
+	color: #f5f5f5;
+	font-size: 2rem;
 }
 
 .button {
-  height:48px;
-  width: 100px;
-  border: none;
-  margin: 2rem 0;
-  color: #f5f5f5;
-  border-radius: 16px;
-  background-color: #212529;
+	height: 8rem;
+	width: 8rem;
+	border: none;
+	margin: 2rem 0;
+	border-radius: 16px;
+}
+
+.rock {
+	background-image: url("./assets/rock.jpg");
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.paper {
+	background-image: url("./assets/paper.jpg");
+	margin: 0 1rem;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.scissors {
+	background-image: url("./assets/scissor.jpg");
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.paragraph {
+	font-size: 1.6rem;
 }

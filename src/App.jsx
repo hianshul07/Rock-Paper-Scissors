@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import image from "./assets/paper.jpg";
+// import image from "./assets/paper.jpg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 
 const ROCK = "rock";
@@ -22,46 +24,49 @@ const RockPaperScissors = () => {
 
 	const checkIsWinner = (player, computer) => {
 		if (player === computer) {
-			return "Tie!";
+			return toast("Tie", { type: "info" });
 		} else if (
 			(player === ROCK && computer === SCISSORS) ||
 			(player === PAPER && computer === ROCK) ||
 			(player === SCISSORS && computer === PAPER)
 		) {
-			return "You win!";
+			return toast("You win", { type: "success" });
 		} else {
-			return "You lose!";
+			return toast("You lose", { type: "error" });
 		}
 	};
 
 	return (
+		// parent container
 		<div>
+			
+			{/* navbar */}
 			<nav color="dark" dark className="navbar">
 				<p>Rock Paper Scissors</p>
 			</nav>
+
+			{/* main section */}
 			<main>
 				<h1>Choose your option:</h1>
-				<button className="button" onClick={() => handleChoice(ROCK)}>
-					Rock
-				</button>{" "}
-				{/* <button className="button" onClick={notify}>
-					NatuNatu
-				</button>{" "} */}
-				<button className="button" onClick={() => handleChoice(PAPER)}>
-					Paper
-				</button>{" "}
-				<button className="button" onClick={() => handleChoice(SCISSORS)}>
-					Scissor
-				</button>
+				<button
+					className="button rock"
+					onClick={() => handleChoice(ROCK)}
+				></button>{" "}
+				<button
+					className="button paper"
+					onClick={() => handleChoice(PAPER)}
+				></button>{" "}
+				<button
+					className="button scissors"
+					onClick={() => handleChoice(SCISSORS)}
+				></button>
 				{playerChoice && computerChoice && result && (
 					<div>
-						{/* <p className="">Your choice {playerChoice}</p> */}
-						<p className="">Your choice {playerChoice}</p>
-						<p>Computer's choice {computerChoice}</p>
-						<p>{result}</p>
+						<p className="paragraph">Your choice {playerChoice}</p>
+						<p className="paragraph">Computer's choice {computerChoice}</p>
+						<ToastContainer position="bottom-left" />
 					</div>
 				)}
-				<img src={image} alt="" height={"100px"} />
 			</main>
 		</div>
 	);
